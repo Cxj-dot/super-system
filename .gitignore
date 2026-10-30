@@ -1,0 +1,10 @@
+# 压缩包 - 网站运行不需要
+*.zip
+
+# PDF 文件 - 网站运行不需要
+*.pdf
+
+# 系统文件
+Thumbs.db
+.DS_Store
+desktop.ini

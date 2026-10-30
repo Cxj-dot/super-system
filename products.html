@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品中心 - 山东亿盟进出口有限公司</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+    <!-- 导航栏 - 与主页完全一致 -->
+    <header class="header" id="header">
+        <div class="header-top">
+            <div class="container header-top-inner">
+                <div class="header-contact">
+                    <span>&#128222; +86-531-8888-6666</span>
+                    <span>&#9993; info@yimeng-trade.com</span>
+                </div>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="zh">中文</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en">English</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-main-inner">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">&#9881;</span>
+                    <span class="logo-text">
+                        <span class="logo-cn">山东亿盟</span>
+                        <span class="logo-en">YIMENG</span>
+                    </span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav" id="mainNav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link" data-i18n="nav_home">首页</a></li>
+                        <li><a href="index.html#about" class="nav-link" data-i18n="nav_about">关于我们</a></li>
+                        <li><a href="products.html" class="nav-link active" data-i18n="nav_products">产品中心</a></li>
+                        <li><a href="index.html#advantage" class="nav-link" data-i18n="nav_advantage">核心优势</a></li>
+                        <li><a href="index.html#contact" class="nav-link" data-i18n="nav_contact">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- 筛选栏 - 在页眉内 -->
+        <div class="filter-bar">
+            <div class="container filter-container">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label class="filter-label" data-i18n="filter_category">产品分类</label>
+                        <div class="filter-tags" id="categoryFilters">
+                            <button class="filter-tag active" data-filter="all" data-i18n="filter_all">全部</button>
+                            <button class="filter-tag" data-filter="tractor_head" data-i18n="filter_tractor_head">牵引头</button>
+                            <button class="filter-tag" data-filter="dump_truck" data-i18n="filter_dump_truck">自卸车</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label" data-i18n="filter_brand">品牌</label>
+                        <div class="filter-tags" id="brandFilters">
+                            <button class="filter-tag active" data-filter="all" data-i18n="filter_all">全部</button>
+                            <button class="filter-tag" data-filter="howo" data-i18n="filter_brand_howo">HOWO</button>
+                            <button class="filter-tag" data-filter="shacman" data-i18n="filter_brand_shacman">SHACMAN</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label" data-i18n="filter_drive">驱动形式</label>
+                        <div class="filter-tags" id="driveFilters">
+                            <button class="filter-tag active" data-filter="all" data-i18n="filter_all">全部</button>
+                            <button class="filter-tag" data-filter="6x4" data-i18n="filter_drive_6x4">6×4</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <div class="filter-search">
+                        <input type="text" class="search-input" id="searchInput" data-i18n-placeholder="filter_search" placeholder="搜索产品名称...">
+                        <span class="search-icon">&#128269;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 产品展示区域 -->
+    <main class="products-main">
+        <div class="container">
+            <div class="products-top">
+                <div class="section-label" data-i18n="products_label">产品中心</div>
+                <h2 class="section-title" data-i18n="products_title_all">全部产品</h2>
+                <p class="products-count" id="productsCount" data-i18n-placeholder="products_total">共 <span>16</span> 款产品</p>
+            </div>
+
+            <div class="products-grid" id="productsGrid"></div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">&#128270;</div>
+                <p class="empty-text" data-i18n="empty_title">没有找到匹配的产品</p>
+                <p class="empty-hint" data-i18n="empty_hint">请尝试调整筛选条件或搜索关键词</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 - 与主页完全一致 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo-icon">&#9881;</span>
+                        <span>山东亿盟进出口有限公司</span>
+                    </a>
+                    <p data-i18n="footer_desc">专业重型机械海外贸易服务商</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_quick">快速链接</h4>
+                    <ul>
+                        <li><a href="index.html#about" data-i18n="nav_about">关于我们</a></li>
+                        <li><a href="products.html" data-i18n="nav_products">产品中心</a></li>
+                        <li><a href="index.html#advantage" data-i18n="nav_advantage">核心优势</a></li>
+                        <li><a href="index.html#contact" data-i18n="nav_contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-products">
+                    <h4 data-i18n="footer_products">产品系列</h4>
+                    <ul>
+                        <li><a href="products.html" data-i18n="footer_tractor_head">牵引头系列</a></li>
+                        <li><a href="products.html" data-i18n="footer_dump_truck">自卸车系列</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 data-i18n="nav_contact">联系我们</h4>
+                    <p>&#128222; +86-531-8888-6666</p>
+                    <p>&#9993; info@yimeng-trade.com</p>
+                    <p>&#128205; 山东省济南市历下区经十路888号</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 山东亿盟进出口有限公司 Shandong Yimeng Import & Export Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/product-data.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
