@@ -222,6 +222,55 @@ document.addEventListener('DOMContentLoaded', function () {
     // 启动自动播放
     startAutoplay();
 
+    // ========== 数据唤醒 - 数字滚动动画 ==========
+    var statNumbers = document.querySelectorAll('.stat-number');
+    var statsAnimated = false;
+
+    function animateNumber(el, target, duration) {
+        var start = 0;
+        var startTime = null;
+        var suffix = '';
+        var rawTarget = target;
+
+        if (typeof target === 'string') {
+            suffix = target.replace(/[0-9]/g, '');
+            rawTarget = parseInt(target.replace(/[^0-9]/g, ''), 10);
+        }
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.floor(eased * rawTarget);
+            el.textContent = current + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                el.textContent = target;
+            }
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    if (statNumbers.length > 0) {
+        var statsObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting && !statsAnimated) {
+                    statsAnimated = true;
+                    statNumbers.forEach(function (num) {
+                        var target = num.textContent.trim();
+                        animateNumber(num, target, 1800);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(statNumbers[0].closest('.about-stats') || statNumbers[0]);
+    }
+
     // ========== 联系我们表单 ==========
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
