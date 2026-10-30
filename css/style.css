@@ -124,10 +124,8 @@ img {
 /* 主导航 */
 .header-main {
     background: rgba(26, 26, 46, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    transition: all 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .header.scrolled .header-main {
@@ -274,6 +272,7 @@ img {
     height: 100vh;
     min-height: 600px;
     overflow: hidden;
+    will-change: transform;
 }
 
 .carousel-track {
@@ -307,6 +306,8 @@ img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transform: translateZ(0);
+    will-change: opacity;
 }
 
 .carousel-overlay {
@@ -463,6 +464,8 @@ img {
    ======================================== */
 .section {
     padding: 100px 0;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
 }
 
 .section-label {

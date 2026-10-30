@@ -73,21 +73,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ========== 导航栏滚动效果 ==========
+    // ========== 导航栏滚动效果（使用 requestAnimationFrame 优化性能）==========
     var header = document.getElementById('header');
+    var ticking = false;
 
     window.addEventListener('scroll', function () {
-        var scrollY = window.scrollY;
+        if (!ticking) {
+            requestAnimationFrame(function () {
+                var scrollY = window.scrollY;
 
-        if (scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+                if (scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                // 更新导航高亮
+                setActiveLink();
+
+                ticking = false;
+            });
+            ticking = true;
         }
-
-        // 更新导航高亮
-        setActiveLink();
-    });
+    }, { passive: true });
 
     // ========== 导航高亮 ==========
     var sections = document.querySelectorAll('section[id]');
