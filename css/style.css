@@ -157,17 +157,19 @@ img {
     left: 24px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: clamp(5px, 1.2vw, 10px);
+    min-width: 0;
     color: var(--white);
     text-decoration: none;
 }
 
 .logo-img {
-    height: 44px;
-    width: 44px;
-    object-fit: cover;
-    object-position: 50% 12%;
     display: block;
+    flex: 0 0 auto;
+    width: clamp(30px, 4.6vw, 44px);
+    height: clamp(30px, 4.6vw, 44px);
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .logo-icon {
@@ -185,20 +187,22 @@ img {
     display: flex;
     flex-direction: column;
     line-height: 1.2;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .logo-cn {
-    font-size: 18px;
+    font-size: clamp(13px, 1.7vw, 18px);
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: clamp(0.5px, 0.25vw, 2px);
     white-space: nowrap;
 }
 
 .logo-en {
-    font-size: 11px;
+    font-size: clamp(7px, 1vw, 11px);
     font-weight: 500;
     color: var(--primary-light);
-    letter-spacing: 3px;
+    letter-spacing: clamp(0.5px, 0.3vw, 3px);
     white-space: nowrap;
 }
 
@@ -1075,9 +1079,6 @@ img {
     .header-main-inner {
         height: 64px;
     }
-    .logo-cn { font-size: 16px; }
-    .logo-en { font-size: 10px; }
-    .logo-img { height: 38px; width: 38px; }
     .nav-list { gap: 28px; }
     .nav-link { font-size: 14px; }
 
@@ -1137,13 +1138,13 @@ img {
         height: 60px;
         flex-direction: row;
         justify-content: space-between;
+        padding-right: 52px;
     }
 
-    .logo { position: static; gap: 8px; }
-    .logo-img { height: 32px; width: 32px; }
+    .logo { position: static; min-width: 0; }
     .logo-icon { font-size: 26px; }
-    .logo-cn { font-size: 15px; letter-spacing: 1px; }
-    .logo-en { font-size: 9px; letter-spacing: 1.5px; }
+    .logo-en { display: none; }
+    .logo-cn { font-size: 15px; }
 
     /* 汉堡菜单 */
     .hamburger { display: flex; }
@@ -1324,10 +1325,6 @@ img {
     .lang-btn { font-size: 12px; }
 
     .header-main-inner { height: 54px; }
-    .logo-img { height: 28px; width: 28px; }
-    .logo { gap: 6px; }
-    .logo-cn { font-size: 14px; letter-spacing: 0.5px; }
-    .logo-en { font-size: 8px; letter-spacing: 1px; }
     .hamburger { width: 36px; height: 36px; right: 14px; }
     .hamburger span { width: 20px; }
 
