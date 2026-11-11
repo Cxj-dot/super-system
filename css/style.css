@@ -163,9 +163,10 @@ img {
 }
 
 .logo-img {
-    height: 48px;
-    width: auto;
-    border-radius: 8px;
+    height: 44px;
+    width: 44px;
+    object-fit: cover;
+    object-position: 50% 12%;
     display: block;
 }
 
@@ -190,6 +191,7 @@ img {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 2px;
+    white-space: nowrap;
 }
 
 .logo-en {
@@ -197,6 +199,7 @@ img {
     font-weight: 500;
     color: var(--primary-light);
     letter-spacing: 3px;
+    white-space: nowrap;
 }
 
 /* 导航菜单 - 居中 */
@@ -1074,7 +1077,7 @@ img {
     }
     .logo-cn { font-size: 16px; }
     .logo-en { font-size: 10px; }
-    .logo-img { height: 42px; }
+    .logo-img { height: 38px; width: 38px; }
     .nav-list { gap: 28px; }
     .nav-link { font-size: 14px; }
 
@@ -1136,10 +1139,11 @@ img {
         justify-content: space-between;
     }
 
-    .logo { position: static; }
+    .logo { position: static; gap: 8px; }
+    .logo-img { height: 32px; width: 32px; }
     .logo-icon { font-size: 26px; }
-    .logo-cn { font-size: 15px; }
-    .logo-en { font-size: 10px; }
+    .logo-cn { font-size: 15px; letter-spacing: 1px; }
+    .logo-en { font-size: 9px; letter-spacing: 1.5px; }
 
     /* 汉堡菜单 */
     .hamburger { display: flex; }
@@ -1320,7 +1324,10 @@ img {
     .lang-btn { font-size: 12px; }
 
     .header-main-inner { height: 54px; }
-    .logo-img { height: 36px; }
+    .logo-img { height: 28px; width: 28px; }
+    .logo { gap: 6px; }
+    .logo-cn { font-size: 14px; letter-spacing: 0.5px; }
+    .logo-en { font-size: 8px; letter-spacing: 1px; }
     .hamburger { width: 36px; height: 36px; right: 14px; }
     .hamburger span { width: 20px; }
 
