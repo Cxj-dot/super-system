@@ -1,5 +1,5 @@
 /**
- * 山东亿盟进出口有限公司 - 产品详情页脚本
+ * 山东龙达国际 - 产品详情页脚本
  * 从 URL 参数获取产品 ID，加载并展示产品详细信息
  */
 document.addEventListener('DOMContentLoaded', function () {
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 更新页面标题
-        document.title = product.name + ' - 山东亿盟进出口有限公司';
+        document.title = product.name + ' - 山东龙达国际';
 
         // 面包屑
         document.getElementById('breadcrumbName').textContent = product.name;
@@ -148,9 +148,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // 主图点击打开灯箱
-        mainImg.addEventListener('click', function () {
-            openLightbox(product.gallery, currentMainIndex);
-        });
+        mainImg.onclick = function () {
+            openLightbox(currentGallery, currentMainIndex);
+        };
     }
 
     function setMainImage(index) {

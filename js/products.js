@@ -1,5 +1,5 @@
 /**
- * 山东亿盟进出口有限公司 - 产品展示页脚本
+ * 山东龙达国际 - 产品展示页脚本
  * 多维属性筛选 / 汉堡菜单 / 多语言
  */
 document.addEventListener('DOMContentLoaded', function () {

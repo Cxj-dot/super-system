@@ -1,5 +1,5 @@
 /**
- * 山东亿盟进出口有限公司 - 共享产品数据
+ * 山东龙达国际 - 共享产品数据
  * 被 products.html 和 product-detail.html 共同引用
  */
 var BASE_PATH = '独立站车型物料包/独立站车型物料包';

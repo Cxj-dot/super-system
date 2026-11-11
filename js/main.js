@@ -1,5 +1,5 @@
 /**
- * 山东亿盟进出口有限公司 - 主脚本
+ * 山东龙达国际 - 主脚本
  * 轮播图 / 导航滚动 / 汉堡菜单 / 表单 / 语言切换
  */
 document.addEventListener('DOMContentLoaded', function () {
