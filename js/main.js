@@ -73,8 +73,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ========== 导航栏滚动效果（使用 requestAnimationFrame 优化性能）==========
+    // ========== 动态测量页头高度，供子页面精确避让 ==========
     var header = document.getElementById('header');
+
+    function updateHeaderHeight() {
+        if (header) {
+            document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+        }
+    }
+
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight, { passive: true });
+    window.addEventListener('load', updateHeaderHeight);
+    if (window.ResizeObserver && header) {
+        new ResizeObserver(updateHeaderHeight).observe(header);
+    }
+
+    // ========== 导航栏滚动效果（使用 requestAnimationFrame 优化性能）==========
     var ticking = false;
 
     window.addEventListener('scroll', function () {
@@ -206,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             startAutoplay();
         }
-    });
+    }, { passive: true });
 
     // 键盘左右箭头
     document.addEventListener('keydown', function (e) {
@@ -221,6 +236,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 启动自动播放
     startAutoplay();
+
+    // ========== 触屏设备：产品卡片点击翻转 ==========
+    var coarsePointer = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)');
+
+    if (coarsePointer && coarsePointer.matches) {
+        document.querySelectorAll('.product-card').forEach(function (card) {
+            card.addEventListener('click', function (e) {
+                if (e.target.closest('.product-card-back-link')) {
+                    return;
+                }
+                var isFlipped = card.classList.contains('flipped');
+
+                document.querySelectorAll('.product-card.flipped').forEach(function (c) {
+                    c.classList.remove('flipped');
+                });
+
+                if (!isFlipped) {
+                    card.classList.add('flipped');
+                    e.preventDefault();
+                }
+            });
+        });
+    }
 
     // ========== 数据唤醒 - 数字滚动动画 ==========
     var statNumbers = document.querySelectorAll('.stat-number');

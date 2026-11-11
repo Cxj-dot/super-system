@@ -7,7 +7,7 @@
     background: var(--light);
     border-bottom: 1px solid var(--border);
     padding: 14px 0;
-    margin-top: 160px;
+    margin-top: var(--header-height, 160px);
 }
 
 .breadcrumb-bar .container {
@@ -464,7 +464,7 @@
     }
 
     .breadcrumb-bar {
-        margin-top: 120px;
+        margin-top: var(--header-height, 120px);
         padding: 10px 0;
     }
 
@@ -609,7 +609,7 @@
     }
 
     .breadcrumb-bar {
-        margin-top: 112px;
+        margin-top: var(--header-height, 112px);
         padding: 8px 0;
     }
 

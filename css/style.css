@@ -335,6 +335,7 @@ img {
     position: relative;
     width: 100%;
     height: 100vh;
+    height: 100svh;
     min-height: 600px;
     overflow: hidden;
     will-change: transform;
@@ -661,9 +662,17 @@ img {
     transform: rotateY(180deg);
 }
 
-@media (hover: none) {
-    .product-card:active .product-card-inner {
+@media (hover: none) and (pointer: coarse) {
+    .product-card:hover .product-card-inner {
+        transform: none;
+    }
+
+    .product-card.flipped .product-card-inner {
         transform: rotateY(180deg);
+    }
+
+    .product-card-inner {
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
@@ -1143,8 +1152,11 @@ img {
         width: 75%;
         max-width: 320px;
         height: 100vh;
+        height: 100dvh;
         background: var(--dark);
         padding: 100px 32px 40px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         transition: right 0.35s ease;
         z-index: 1050;
         box-shadow: -8px 0 40px rgba(0, 0, 0, 0.4);
@@ -1165,6 +1177,7 @@ img {
         padding: 14px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         color: #cbd5e1;
+        text-align: left;
     }
 
     .nav-link::after,
@@ -1191,12 +1204,13 @@ img {
 
     /* ===== 轮播 ===== */
     .carousel {
-        height: 75vh;
-        min-height: 420px;
+        height: 100svh;
+        min-height: 520px;
     }
     .carousel-content {
         max-width: 100%;
         padding: 0 28px;
+        top: calc(50% + var(--header-height, 112px) / 2);
     }
     .carousel-content h2 {
         font-size: 28px;
@@ -1214,12 +1228,8 @@ img {
         margin-bottom: 18px;
     }
     .carousel-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 15px;
+        display: none;
     }
-    .carousel-prev { left: 8px; }
-    .carousel-next { right: 8px; }
     .carousel-dots { bottom: 28px; gap: 10px; }
     .dot { width: 10px; height: 10px; }
     .dot.active { width: 26px; }
@@ -1280,7 +1290,7 @@ img {
         gap: 28px;
         padding-bottom: 32px;
     }
-    .footer-bottom { padding: 18px 0; font-size: 12px; }
+    .footer-bottom { padding: 18px 0 84px; font-size: 12px; }
 
     /* 按钮 */
     .btn { padding: 12px 28px; font-size: 14px; }
@@ -1316,11 +1326,12 @@ img {
 
     /* 轮播 */
     .carousel {
-        height: 70vh;
-        min-height: 360px;
+        height: 100svh;
+        min-height: 440px;
     }
     .carousel-content {
         padding: 0 20px;
+        top: calc(50% + var(--header-height, 104px) / 2);
     }
     .carousel-content h2 {
         font-size: 22px;
@@ -1336,14 +1347,6 @@ img {
         letter-spacing: 2px;
         margin-bottom: 14px;
     }
-    .carousel-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 13px;
-        border-width: 1px;
-    }
-    .carousel-prev { left: 6px; }
-    .carousel-next { right: 6px; }
     .carousel-dots { bottom: 20px; gap: 8px; }
     .dot { width: 8px; height: 8px; }
     .dot.active { width: 22px; border-radius: 4px; }
@@ -1390,7 +1393,7 @@ img {
     .contact-item strong { font-size: 14px; }
     .contact-item p { font-size: 14px; }
     .form-group input,
-    .form-group textarea { padding: 12px 14px; font-size: 14px; }
+    .form-group textarea { padding: 12px 14px; font-size: 16px; }
 
     /* 页脚 */
     .footer { padding: 32px 0 0; }
@@ -1402,7 +1405,7 @@ img {
     .footer-links h4,
     .footer-products h4,
     .footer-contact h4 { font-size: 14px; margin-bottom: 10px; }
-    .footer-bottom { padding: 14px 0; font-size: 11px; }
+    .footer-bottom { padding: 14px 0 80px; font-size: 11px; }
 
     /* 按钮 */
     .btn { padding: 12px 24px; font-size: 14px; letter-spacing: 0; }

@@ -118,7 +118,7 @@
 
 /* ========== 产品主区域 ========== */
 .products-main {
-    padding-top: 210px;
+    padding-top: calc(var(--header-height, 210px) + 24px);
     min-height: 100vh;
     background: var(--light);
 }
@@ -321,7 +321,6 @@
    响应式 - 平板
    ======================================== */
 @media (max-width: 1024px) {
-    .products-main { padding-top: 190px; }
     #productsGrid.products-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .product-card-image { height: 190px; }
 }
@@ -331,33 +330,45 @@
    ======================================== */
 @media (max-width: 768px) {
     .filter-container {
-        gap: 12px;
+        gap: 10px;
         padding: 10px 0;
     }
 
     .filter-row {
-        gap: 12px;
+        gap: 10px;
         flex-direction: column;
         align-items: stretch;
     }
 
     .filter-group {
         width: 100%;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        gap: 8px;
     }
 
     .filter-tags {
-        flex-wrap: wrap;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 6px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+    }
+
+    .filter-tags::-webkit-scrollbar {
+        display: none;
     }
 
     .filter-label {
         font-size: 12px;
-        min-width: 56px;
+        min-width: 60px;
     }
 
     .filter-tag {
-        padding: 5px 10px;
-        font-size: 11px;
+        flex-shrink: 0;
+        padding: 6px 14px;
+        font-size: 12px;
     }
 
     .filter-search {
@@ -367,14 +378,14 @@
 
     .search-input {
         width: 100%;
-        font-size: 13px;
+        font-size: 16px;
     }
 
     .search-input:focus {
         width: 100%;
     }
 
-    .products-main { padding-top: 280px; }
+    .products-main { padding-top: calc(var(--header-height, 280px) + 20px); }
     #productsGrid.products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .product-card-image { height: 180px; }
     .product-card-body { padding: 18px; }
@@ -387,10 +398,13 @@
 }
 
 @media (max-width: 480px) {
-    .products-main { padding-top: 310px; }
+    .products-main { padding-top: calc(var(--header-height, 300px) + 16px); }
     #productsGrid.products-grid { grid-template-columns: 1fr; gap: 14px; max-width: 360px; margin-left: auto; margin-right: auto; }
     .product-card-image { height: 220px; }
-    .filter-bar { padding: 8px 0; }
-    .filter-tag { padding: 4px 10px; font-size: 11px; }
+    .filter-bar { padding: 6px 0; }
+    .filter-container { gap: 8px; padding: 8px 0; }
+    .filter-label { min-width: 54px; font-size: 11px; }
+    .filter-tag { padding: 5px 12px; font-size: 11px; }
+    .filter-row { gap: 8px; }
     .empty-state { padding: 40px 14px; }
 }
